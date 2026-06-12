@@ -157,14 +157,20 @@ describe("Firebase Storage JavaScript SDK conformance tests", () => {
     this.timeout(EMULATORS_SHUTDOWN_DELAY_MS);
     try {
       await deleteApp(getApp());
-    } catch (e) {}
+    } catch (e) {
+      // Ignore cleanup error
+    }
     try {
       fs.rmSync(tmpDir, { recursive: true, force: true });
-    } catch (e) {}
+    } catch (e) {
+      // Ignore cleanup error
+    }
     try {
       await page?.close();
       await browser?.close();
-    } catch (e) {}
+    } catch (e) {
+      // Ignore cleanup error
+    }
 
     TEST_ENV.removeEnvVars();
     if (!TEST_ENV.useProductionServers) {

@@ -103,14 +103,20 @@ describe("Storage persistence conformance tests", () => {
       if (admin.apps.length > 0) {
         await admin.app().delete();
       }
-    } catch (e) {}
+    } catch (e) {
+      // Ignore cleanup error
+    }
     try {
       fs.rmSync(tmpDir, { recursive: true, force: true });
-    } catch (e) {}
+    } catch (e) {
+      // Ignore cleanup error
+    }
     try {
       await page?.close();
       await browser?.close();
-    } catch (e) {}
+    } catch (e) {
+      // Ignore cleanup error
+    }
 
     TEST_ENV.removeEnvVars();
     if (!TEST_ENV.useProductionServers) {
