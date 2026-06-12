@@ -85,6 +85,6 @@ export class CLIProcess {
     }).then(() => undefined); // Fixes return type.
 
     p.kill("SIGINT");
-    return stopped;
+    return stopped.then(() => new Promise((resolve) => setTimeout(resolve, 2500)));
   }
 }

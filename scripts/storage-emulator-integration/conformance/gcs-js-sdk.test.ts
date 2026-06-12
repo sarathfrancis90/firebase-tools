@@ -65,12 +65,18 @@ describe("GCS Javascript SDK conformance tests", () => {
 
   after(async function (this) {
     this.timeout(EMULATORS_SHUTDOWN_DELAY_MS);
-    admin.app().delete();
-    fs.rmSync(tmpDir, { recursive: true, force: true });
+    try {
+      if (admin.apps.length > 0) {
+        await admin.app().delete();
+      }
+    } catch (e) {}
+    try {
+      fs.rmSync(tmpDir, { recursive: true, force: true });
+    } catch (e) {}
 
     TEST_ENV.removeEnvVars();
     if (!TEST_ENV.useProductionServers) {
-      await test.stopEmulators();
+      await test?.stopEmulators();
     }
   });
 

@@ -27,4 +27,20 @@ mocha scripts/storage-emulator-integration/multiple-targets/tests.ts
 
 sleep 5
 
-mocha scripts/storage-emulator-integration/conformance/*.test.ts
+mocha scripts/storage-emulator-integration/conformance/firebase-js-sdk.test.ts
+
+sleep 5
+
+mocha scripts/storage-emulator-integration/conformance/firebase.endpoints.test.ts
+
+sleep 5
+
+mocha scripts/storage-emulator-integration/conformance/gcs-js-sdk.test.ts
+
+sleep 5
+
+mocha scripts/storage-emulator-integration/conformance/gcs.endpoints.test.ts
+
+sleep 5
+
+mocha scripts/storage-emulator-integration/conformance/persistence.test.ts
