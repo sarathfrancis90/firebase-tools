@@ -60,12 +60,13 @@ describe("Storage persistence conformance tests", () => {
     browser = await puppeteer.launch({
       headless: !TEST_ENV.showBrowser,
       devtools: TEST_ENV.showBrowser,
+      pipe: true,
+      dumpio: true,
       args: [
         "--no-sandbox",
         "--disable-setuid-sandbox",
         "--disable-dev-shm-usage",
         "--disable-gpu",
-        "--remote-debugging-address=127.0.0.1",
       ],
     });
     page = await browser.newPage();
