@@ -102,15 +102,15 @@ describe("Firebase Storage JavaScript SDK conformance tests", () => {
 
     // Init fake browser page.
     browser = await puppeteer.launch({
-      headless: !TEST_ENV.showBrowser,
+      headless: !TEST_ENV.showBrowser ? "new" : false,
       devtools: TEST_ENV.showBrowser,
-      pipe: true,
       dumpio: true,
       args: [
         "--no-sandbox",
         "--disable-setuid-sandbox",
         "--disable-dev-shm-usage",
         "--disable-gpu",
+        "--disable-software-rasterizer",
       ],
     });
     page = await browser.newPage();
